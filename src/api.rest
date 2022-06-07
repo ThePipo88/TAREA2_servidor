@@ -11,7 +11,6 @@ GET http://localhost:5000/api/v1/login/Reyner/123
 
 
 //Comentarios
-
 ###
 GET http://localhost:5000/api/v1/comentarios/obtener
 
