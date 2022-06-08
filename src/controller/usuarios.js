@@ -9,6 +9,68 @@ const pool = mysql.createPool({
     database: 'bd_comentarios'
 })
 
+
+async function createUser(req, res) {
+
+    pool.getConnection((err, connection) => {
+        if (err) throw err
+        const params = req.body
+
+        connection.query('INSERT INTO tbl_usuarios SET ?', [params], (err, rows) => {
+            connection.release()
+
+            if (!err) {
+                res.send(`Usuario creado correctamente`)
+            } else {
+                console.log(err)
+            }
+
+        })
+        console.log(req.body);
+    })
+}
+
+async function actualizarUsuario(req, res) {
+
+    pool.getConnection((err, connection) => {
+        if (err) throw err
+        const params = req.body
+
+        connection.query('UPDATE tbl_usuarios SET ? WHERE id = ?', [req.body, req.body.id], (err, rows) => {
+            connection.release()
+
+            if (!err) {
+                res.send(`Usuario modificado correctamente`)
+            } else {
+                console.log(err)
+            }
+
+        })
+        console.log(req.body);
+    })
+}
+
+async function eliminarUsuario(req, res) {
+
+    pool.getConnection((err, connection) => {
+        if (err) throw err
+        const params = req.body
+
+        connection.query('DELETE FROM tbl_usuarios WHERE id = ?', [req.body.id], (err, rows) => {
+            connection.release()
+
+            if (!err) {
+                res.send(`Usuario eliminado correctamente`)
+            } else {
+                console.log(err)
+            }
+
+        })
+        console.log(req.body);
+    })
+}
+
+
 async function findAll(req, res) {
 
     pool.getConnection((err, connection) => {
@@ -45,7 +107,11 @@ async function findByNameAndPassword(req, res) {
     })
 }
 
+
 module.exports = {
     findAll,
-    findByNameAndPassword
+    findByNameAndPassword,
+    createUser,
+    actualizarUsuario,
+    eliminarUsuario
 };

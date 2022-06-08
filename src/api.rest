@@ -10,6 +10,33 @@ GET http://localhost:5000/api/v1/obtener
 GET http://localhost:5000/api/v1/login/Reyner/123
 
 
+###
+PUT http://localhost:5000/api/v1/usuarios/actualizar/
+Content-Type: application/json
+
+{
+    "id": 3,
+    "nombre": "Emilio",
+    "contrasena": "222"
+}
+
+###
+POST http://localhost:5000/api/v1/usuarios/crear/
+Content-Type: application/json
+
+{
+    "nombre": "Pedro",
+    "contrasena": "345"
+}
+
+###
+DELETE http://localhost:5000/api/v1//usuarios/eliminar/
+Content-Type: application/json
+
+{
+    "id": 4
+}
+
 //Comentarios
 ###
 GET http://localhost:5000/api/v1/comentarios/obtener
