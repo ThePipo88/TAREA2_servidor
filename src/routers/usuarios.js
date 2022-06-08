@@ -7,6 +7,6 @@ api.get("/obtener/", UsuariosController.findAll);
 api.get("/login/:usuario/:contrasena", UsuariosController.findByNameAndPassword);
 api.post("/usuarios/crear/", UsuariosController.createUser);
 api.put("/usuarios/actualizar/", UsuariosController.actualizarUsuario);
-api.delete("/usuarios/eliminar/", UsuariosController.eliminarUsuario);
+api.delete("/usuarios/eliminar/:id", UsuariosController.eliminarUsuario);
 
 module.exports = api;
